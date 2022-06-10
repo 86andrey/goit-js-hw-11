@@ -52,11 +52,11 @@ async function getPictures(searchQuery) {
     );
     total += response.data.hits.length;
     const totalHits = response.data.totalHits;
-    // if (totalHits < 1) {
-    //   return Notify.failure(
-    //     'Sorry, there are no images matching your search query. Please try again.'
-    //   );
-    // }
+    if (totalHits < 1) {
+      return Notify.failure(
+        'Sorry, there are no images matching your search query. Please try again.'
+      );
+    }
     if (total >= totalHits) {
       Notify.warning(
         'We`re sorry, but you`ve reached the end of search results.'
