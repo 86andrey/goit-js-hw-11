@@ -38,6 +38,7 @@ function onLoadMore() {
     renderPictures(data.hits);
     loadMoreBtn.style.display = 'block';
     if (page === 2) {
+      console.log(page);
       Notify.success(`Hooray! We found ${data.totalHits} images.`);
     }
   });
@@ -60,10 +61,10 @@ async function getPictures(searchQuery) {
       Notify.warning(
         'We`re sorry, but you`ve reached the end of search results.'
       );
-      loadMoreBtn.style.display = 'none';
+      return (loadMoreBtn.style.display = 'none');
     }
     return response.data;
-  } catch (error) {
+  } catch (e) {
     Notify.failure(
       'Sorry, there are no images matching your search query. Please try again.'
     );
